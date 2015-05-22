@@ -1,0 +1,12 @@
+PeerB: PeerB.o sendAndReceiveFunctions.o
+	gcc -o PeerB -g PeerB.o sendAndReceiveFunctions.o
+PeerA: PeerA.o sendAndReceiveFunctions.o
+	gcc -o PeerA -g PeerA.o sendAndReceiveFunctions.o
+PeerB.o: PeerB.c sendAndReceiveFunctions.h 
+	gcc -o PeerB.o -g -c -Wall PeerB.c
+PeerA.o: PeerA.c sendAndReceiveFunctions.h 
+	gcc -o PeerA.o -g -c -Wall PeerA.c
+sendAndReceiveFunctions.o: sendAndReceiveFunctions.c sendAndReceiveFunctions.h
+	gcc  -g -c -Wall sendAndReceiveFunctions.c 
+clean:
+	rm -rf *.o PeerA PeerB 
